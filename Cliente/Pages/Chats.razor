@@ -1,0 +1,21 @@
+﻿@page "/Chats"
+<h1>Chats</h1>
+<div class="row">
+    <div class="col-4">
+        <p class="text-center">Chats</p>
+        @foreach (var chat in ChatUser)
+        {
+            <div class="border border-primary rounded cursorMouse mb-2 p-3"
+                 @onclick="()=> { AbrirChat(chat.IdChat); }">
+                <p>Mensaje de: <strong>@chat.User</strong></p>
+                <p class="text-black-50">@chat.LastMessage</p>
+            </div>
+        }
+    </div>
+    @if (IdChatSeleccionado > 0)
+    {
+        <div class="col-8">
+
+        </div>
+    }
+</div>
