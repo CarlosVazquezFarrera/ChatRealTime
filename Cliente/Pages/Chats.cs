@@ -13,7 +13,7 @@
     {
         [Inject]
         public HttpClient Http { get; set; }
-
+        public bool CargandoChat { get; set; }
         public int IdChatSeleccionado { get; set; }
         protected async override void OnInitialized()
         {

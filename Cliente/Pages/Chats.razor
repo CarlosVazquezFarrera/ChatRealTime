@@ -15,7 +15,25 @@
     @if (IdChatSeleccionado > 0)
     {
         <div class="col-8">
-
+            @if (CargandoChat)
+            {
+                <p class="text-center">Cargando...</p>
+            }
+            @foreach (var message in MensajesChat)
+            {
+                if(message.FromUserId == UsuariooHelper.GetUser().Id)
+                {
+                    <div class="border border-dark rounded-3 bg-success text-right">
+                        <p>@message.MessageText</p>
+                    </div> 
+                }
+                else
+                {
+                    <div class="border border-dark rounded-3 .bg-secondary text-left">
+                        <p>@message.MessageText</p>
+                    </div> 
+                }
+            }
         </div>
     }
 </div>

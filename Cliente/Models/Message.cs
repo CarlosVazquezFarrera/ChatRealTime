@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Server.Models
+namespace Cliente.Models
 {
     public class Message
     {
