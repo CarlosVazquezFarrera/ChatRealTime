@@ -6,8 +6,8 @@
         @foreach (var chat in ChatUser)
         {
             <div class="border border-primary rounded cursorMouse mb-2 p-3"
-                 @onclick="()=> { AbrirChat(chat.IdChat); }">
-                <p>Mensaje de: <strong>@chat.User</strong></p>
+                 @onclick="async ()=> { await AbrirChat(chat.IdChat); }">
+                <p>Chat con: <strong>@chat.User</strong></p>
                 <p class="text-black-50">@chat.LastMessage</p>
             </div>
         }
@@ -23,17 +23,30 @@
             {
                 if(message.FromUserId == UsuariooHelper.GetUser().Id)
                 {
-                    <div class="border border-dark rounded-3 bg-success text-right">
+                    <div class="border border-dark rounded-3 bg-success text-right mb-2 p-2">
                         <p>@message.MessageText</p>
                     </div> 
                 }
                 else
                 {
-                    <div class="border border-dark rounded-3 .bg-secondary text-left">
+                    <div class="border border-dark rounded-3 bg-secondary text-left mb-2 p-2">
                         <p>@message.MessageText</p>
                     </div> 
                 }
             }
+            <div>
+                <div class="row">
+                    <div class="col-10">
+                        <input type="text" placeholder="Mensaje" />
+                    </div>
+                    <div class="col-2">
+                        <button class=" btn btn-success">
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     }
 </div>

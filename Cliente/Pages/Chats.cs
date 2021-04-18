@@ -11,14 +11,17 @@
 
     public partial class Chats
     {
+        public Chats()
+        {
+        }
         [Inject]
         public HttpClient Http { get; set; }
-        public bool CargandoChat { get; set; }
+
+        public bool CargandoChat = false;
         public int IdChatSeleccionado { get; set; }
         protected async override void OnInitialized()
         {
-            Console.WriteLine(UsuariooHelper.GetUser().Id);
-            Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            this.Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await Http.GetAsync($"Chat/ObtenerChats?Idusuario={UsuariooHelper.GetUser().Id}");
             if (response.IsSuccessStatusCode)
             {
@@ -28,12 +31,21 @@
             }
         }
 
-        public void AbrirChat(int IdChat)
+        public async Task AbrirChat(int IdChat)
         {
             this.IdChatSeleccionado = IdChat;
-            Console.WriteLine(IdChat);
+            CargandoChat = true;
+            this.Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await Http.GetAsync($"Chat/ObtenerMensajes?IdChat={IdChat}");
+            if (response.IsSuccessStatusCode)
+            {
+                var mensajes = await response.Content.ReadFromJsonAsync<List<Message>>();
+                this.MensajesChat = mensajes;
+                StateHasChanged();
+            }
+            CargandoChat = false;
         }
-        public List<Chat> ChatUser { get; set; } = new List<Chat>();
-
+        List<Chat> ChatUser { get; set; } = new List<Chat>();
+        List<Message> MensajesChat = new List<Message>();
     }
 }

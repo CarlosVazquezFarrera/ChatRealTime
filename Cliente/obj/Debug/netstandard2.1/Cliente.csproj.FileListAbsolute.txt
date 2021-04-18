@@ -367,6 +367,6 @@ C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\Cliente.dll
 C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\Cliente.pdb
 C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Chats.razor.g.cs
 C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\Razor\Pages\Chats.razor.g.cs
-C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\integrity\CjgkHMGvldYFyqXuuspFRgYbAt9AMim63HR4LtXgx8U=.hash
-C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\integrity\eD3mHUeFY1BcXM3QIQ-VFM9FhOKi7AbrpepVCJ2iwlQ=.hash
-C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\integrity\SJLXVvewoYCOABEmks_ntSUlrYbIYlD4pT095aBlj_Y=.hash
+C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\integrity\YpRUTnuyPDIj9qoAEFsiEYbwROt2s7u01WBkHEcnPqI=.hash
+C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\integrity\eroLK6u6u8fkUvC2XxzbOgaiz0oi0UiYBBaNPBW3Ins=.hash
+C:\SIIC\ChatDemo\Cliente\obj\Debug\netstandard2.1\integrity\cqv5o7gQ6poZAuq6KG2JlmUeH4jIw30F-qZ15yBl664=.hash

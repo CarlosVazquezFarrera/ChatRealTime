@@ -6,7 +6,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "Cliente.dll": "sha256-CjgkHMGvldYFyqXuuspFRgYbAt9AMim63HR4LtXgx8U=",
+      "Cliente.dll": "sha256-YpRUTnuyPDIj9qoAEFsiEYbwROt2s7u01WBkHEcnPqI=",
       "System.Text.Json.dll": "sha256-HQeN+ZfHAERO+uW0fP0J9J3WV1hQ3vUIOWbqGSYBPp8=",
       "System.Runtime.CompilerServices.Unsafe.dll": "sha256-kL\/omZDwqByAi+lPdMeDmr3XjHcn4RVb+LmZ4mut1Yc=",
       "mscorlib.dll": "sha256-BaZPMj95+YNe3G4ckTGD6szZFwZeA2MOHn91zTGKDeU=",
@@ -60,7 +60,7 @@
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-czNf3btAeBW\/vvID5LAfgcsNZ+GM3ssVuPaMflcg0rs="
     },
     "pdb": {
-      "Cliente.pdb": "sha256-eD3mHUeFY1BcXM3QIQ\/VFM9FhOKi7AbrpepVCJ2iwlQ="
+      "Cliente.pdb": "sha256-eroLK6u6u8fkUvC2XxzbOgaiz0oi0UiYBBaNPBW3Ins="
     },
     "runtime": {
       "dotnet.3.2.0.js": "sha256-mPoqx7XczFHBWk3gRNn0hc9ekG1OvkKY4XiKRY5Mj5U=",
