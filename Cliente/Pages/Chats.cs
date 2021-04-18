@@ -2,6 +2,7 @@
 {
     using Cliente.Models;
     using Microsoft.AspNetCore.Components;
+    using Microsoft.AspNetCore.SignalR.Client;
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
@@ -11,14 +12,19 @@
 
     public partial class Chats
     {
-        public Chats()
-        {
-        }
+        List<Chat> ChatUser { get; set; } = new List<Chat>();
+        private HubConnection hubConnection;
+        List<Message> MensajesChat = new List<Message>();
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
         [Inject]
         public HttpClient Http { get; set; }
-
+        Guid ToUserId;
         public bool CargandoChat = false;
         public int IdChatSeleccionado { get; set; }
+        public string Mensaje { get; set; }
+
+        bool IsConected => hubConnection.State == HubConnectionState.Connected;
         protected async override void OnInitialized()
         {
             this.Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -29,10 +35,23 @@
                 this.ChatUser = chats;
                 StateHasChanged();
             }
+            hubConnection = new HubConnectionBuilder()
+            .WithUrl("http://localhost:63077/chathub")
+            .WithAutomaticReconnect()
+            .Build();
+
+            hubConnection.On<Message>("ReceiveMessage", (message) =>
+            {
+                this.MensajesChat.Add(message);
+                StateHasChanged();
+            });
+
+            await hubConnection.StartAsync();
         }
 
-        public async Task AbrirChat(int IdChat)
+        public async Task AbrirChat(int IdChat, Guid IdUserChat)
         {
+            this.ToUserId = IdUserChat;
             this.IdChatSeleccionado = IdChat;
             CargandoChat = true;
             this.Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -45,7 +64,18 @@
             }
             CargandoChat = false;
         }
-        List<Chat> ChatUser { get; set; } = new List<Chat>();
-        List<Message> MensajesChat = new List<Message>();
+
+        public async Task EnviarMensaje()
+        {
+            Message mensaje = new Message
+            {
+                IdChat = this.IdChatSeleccionado,
+                FromUserId = UsuariooHelper.GetUser().Id,
+                ToUserId = this.ToUserId,
+                MessageText = this.Mensaje
+            };
+            await hubConnection.SendAsync("ReceiveMessage", mensaje);
+            
+        }
     }
 }
