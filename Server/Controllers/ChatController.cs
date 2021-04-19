@@ -55,7 +55,7 @@
                    {
                        IdChat = 2,
                        LastMessage = "Ultimo mensaje con juanito 3",
-                       User = "Juanito 3",
+                       User = "Juanito 1",
                        FromUserId = new Guid("35586006-78ef-4ab4-b707-39739f88ea30")
                    }
                 }

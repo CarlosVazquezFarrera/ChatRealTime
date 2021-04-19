@@ -75,7 +75,7 @@
                 MessageText = this.Mensaje
             };
             await hubConnection.SendAsync("ReceiveMessage", mensaje);
-            
+            this.Mensaje = string.Empty;
         }
     }
 }
