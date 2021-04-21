@@ -42,7 +42,7 @@
                        IdChat = 1,
                        LastMessage = "Ultimo Mensaje de Juanito 2",
                        User = "Janito 1",
-                       FromUserId = new Guid("2a870d62-58c1-47c5-90f3-718e64e32ace")
+                       FromUserId = new Guid("35586006-78ef-4ab4-b707-39739f88ea30")
                     }
                 }
             },

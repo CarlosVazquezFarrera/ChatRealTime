@@ -42,7 +42,11 @@
 
             hubConnection.On<Message>("ReceiveMessage", (message) =>
             {
-                this.MensajesChat.Add(message);
+                if (message.IdChat == IdChatSeleccionado && (message.FromUserId == UsuariooHelper.GetUser().Id && message.ToUserId == this.ToUserId ||
+                message.ToUserId == UsuariooHelper.GetUser().Id && message.FromUserId == this.ToUserId))
+                {
+                    this.MensajesChat.Add(message);
+                }
                 StateHasChanged();
             });
 
