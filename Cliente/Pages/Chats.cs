@@ -42,11 +42,8 @@
 
             hubConnection.On<Message>("ReceiveMessage", (message) =>
             {
-                if (message.IdChat == IdChatSeleccionado && (message.FromUserId == UsuariooHelper.GetUser().Id && message.ToUserId == this.ToUserId ||
-                message.ToUserId == UsuariooHelper.GetUser().Id && message.FromUserId == this.ToUserId))
-                {
-                    this.MensajesChat.Add(message);
-                }
+                this.MensajesChat.Add(message);
+
                 StateHasChanged();
             });
 
@@ -55,9 +52,11 @@
 
         public async Task AbrirChat(int IdChat, Guid IdUserChat)
         {
+            if (IdChat == IdChatSeleccionado) return;
             this.ToUserId = IdUserChat;
             this.IdChatSeleccionado = IdChat;
             CargandoChat = true;
+            await hubConnection.InvokeAsync("JoinToGroup", IdChat);
             this.Http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await Http.GetAsync($"Chat/ObtenerMensajes?IdChat={IdChat}");
             if (response.IsSuccessStatusCode)
